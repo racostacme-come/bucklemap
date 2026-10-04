@@ -9,6 +9,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.ticker import NullLocator
 from numpy.polynomial.legendre import leggauss
 from scipy.optimize import brentq
 
@@ -148,6 +149,7 @@ def run_study(output):
     for ax in axes:
         ax.set_xlabel("Number of elements")
         ax.set_xticks([4, 8, 16, 32], ["4", "8", "16", "32"])
+        ax.xaxis.set_minor_locator(NullLocator())
         ax.grid(alpha=0.2)
         ax.legend(fontsize=8)
     fig.savefig(output / "convergence.png")
